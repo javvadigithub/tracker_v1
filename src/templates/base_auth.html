@@ -33,11 +33,15 @@
 
 
     
-
-      <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" ></script>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js" ></script>
+{% comment %} 
+      <script src="{% static 'feather.min.js' %}" ></script>
+      <script src="{% static 'chart.umd.min.js' %}" ></script> {% endcomment %}
       <script src="{% static 'js/main.js' %}"></script>
       <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+      {% comment %} <script type="text/javascript" src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+      <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script> {% endcomment %}
+
       
     
   </body>
