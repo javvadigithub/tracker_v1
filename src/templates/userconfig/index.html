@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br> 
+  <!-- Button trigger modal -->
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          {% include  'partials/_messages.html'%}
+          <h5 class="card-title">Currency Configuration</h5>
+          <p class="card-text">This helps you set your bussiness requirment Currency</p>
+          <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">
+            Currency Config
+            
+          </button>
+          
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                       <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  
+                <div class="btn-group">
+                      <form action="{% url 'config' %}" method="post">
+                      {% csrf_token %}
+                      <div class="input-group">
+                        <select name="currency" class="custom-select" id="inputGroupSelect04">
+                          <option name="currency" selected value="{{user_config.currencey}}"></option>
+                          {% if user_config.currency %}
+                          <button type="button" class="btn btn-outline-info dropdown-toggle" data-bs-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                            Select Currency
+                          </button>
+                          {% endif %} {% for currency in currencies %}
+                          <div class="dropdown-menu dropdown-menu-lg-right">
+                            
+                            <option selected>
+                            <button name="currency" class="dropdown-item" type="button" value="{{currency.name}} - {{currency.value}}" >
+                                                                                               {{currency.name}} - {{currency.value}}</button>
+                            </option>
+                            
+                          </div>
+                          {% endfor %}
+                          
+                        </select>
+                        
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-info" data-dismiss="modal">Close</button>
+                        <input class="btn btn-outline-success" type="submit" value="Save"  />
+
+                      </div>
+                    </form>
+                    </div>
+                </div>
+                
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+{% endblock  %}
+
